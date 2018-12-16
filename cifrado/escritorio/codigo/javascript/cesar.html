@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CIFRADO CESAR</title>
+
+<script  src="cifrado.js"></script>
+  </head>
+  <body>
+<table cellspacing="4" cellpadding="6" border="1" width=400 bgcolor=F7E473>
+<tr>
+    <td colspan="3" bgcolor="F1E5A2" align="center">
+      <h2>Texto Plano</h2>
+      <textarea type="text" id="texto" cols="40" rows="2" onkeyup ="desplaza()" /> </textarea>
+    </td>
+</tr>
+<tr>
+    <td width="50%">
+    <h2>Cifrado cesar</h2>
+    <h2>Desplazamiento</h2>
+    <input type="number" value="1" size="15" maxlength="30"  id ="desplazamiento" onkeyup ="desplaza()" onchange="desplaza()">
+    <h2>Cifrado</h2>
+    <textarea type="text" id="tcifrado" cols="30" rows="5" onkeyup ="descif()" /> </textarea>
+    </td>
+    <td width="50%">
+     <h2>Transposición Inversa</h2>
+      <textarea type="text" id="transposicion" cols="30" rows="5"  /> </textarea>
+    </td>
+    <td width="50%">
+    <h2>Transposición Inversa en Grupo</h2>
+    <input type="number" value="1" size="15" maxlength="30"  id ="grupo" onchange="transposicionIG()">
+    <h2>Cifrado</h2>
+    <textarea type="text" id="transpGrupo" cols="30" rows="5"  /> </textarea>
+  </td>
+</tr>
+
+</table>
+
+<script language="javascript">
+
+
+  function desplaza(){
+    var caracter = document.getElementById("texto").value;
+    var despl = document.getElementById("desplazamiento").value;
+    var grupo = document.getElementById("grupo").value;
+    var d = " ";
+    var res="";
+    //resul.innerHTML= cifrar(caracter,res,despl); //d;
+    document.getElementById("tcifrado").value = cifrar(caracter,res,despl);
+    document.getElementById("transposicion").value = transposicion(caracter,res);
+    document.getElementById("transpGrupo").value = cifrarGrupal(grupo,0,res,caracter);
+    //document.getElementById("transpGrupo").value = transposicionInvGr(caracter,grupo,res);
+  }
+  function descif(){
+    var tcif = document.getElementById("tcifrado").value;
+    var despl = document.getElementById("desplazamiento").value;
+    
+    var d = " ";
+    var res="";
+    document.getElementById("texto").value = descifrar(tcif,res,despl);
+  }
+  function transposicionIG()
+  {
+    var tp = document.getElementById("texto").value;
+    var grupo = document.getElementById("grupo").value;
+    var res="";
+    document.getElementById("transpGrupo").value = cifrarGrupal(grupo,0,res,tp);
+     /*document.getElementById("transpGrupo").value = transposicionInvGr(tp,grupo,res);*/
+  }
+      </script>
+               
+        </body>
+      </html>
+      
